@@ -75,6 +75,13 @@ resource "aws_security_group" "bastion_host_security_group" {
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
+  
+  egress {
+    from_port   = 3306
+    to_port     = 3306
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = "${merge(var.tags)}"
 }
